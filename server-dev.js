@@ -1,6 +1,6 @@
 /**
- * Joke Generator Backend API
- * Express server with Gemini AI integration
+ * Development Server - Localhost Version
+ * This is the original Node.js/Express backend for local development
  */
 
 const express = require('express');
@@ -13,8 +13,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors()); // Allow frontend to call this API
-app.use(express.json()); // Parse JSON requests
+app.use(cors());
+app.use(express.json());
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -25,15 +25,13 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 app.get('/health', (req, res) => {
     res.json({ 
         status: 'OK', 
-        message: 'Joke Generator API is running',
+        message: 'Joke Generator API is running (Development)',
         timestamp: new Date().toISOString()
     });
 });
 
 /**
  * Generate joke endpoint
- * POST /joke
- * Body: { "input": "user input text" }
  */
 app.post('/joke', async (req, res) => {
     try {
@@ -62,9 +60,9 @@ app.post('/joke', async (req, res) => {
         // Generate joke using Gemini AI
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         
-        const prompt = `Generate a funny, vulgar joke which must have the word/phrase: "${trimmedInput}". 
-        The joke must be inappropriate for all audiences and should be creative and original. 
-        Return only the joke text, no additional commentary. Do not give this "Why don't scientists trust atoms? Because they make up everything! "`;
+        const prompt = `Generate a funny, clean joke related to or inspired by the word/phrase: "${trimmedInput}". 
+        The joke should be appropriate for all audiences and should be creative and original. 
+        Return only the joke text, no additional commentary.`;
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
@@ -96,7 +94,6 @@ app.post('/joke', async (req, res) => {
     } catch (error) {
         console.error('Error generating joke:', error);
         
-        // Handle specific Gemini API errors
         if (error.message.includes('API_KEY')) {
             return res.status(500).json({
                 error: 'API key not configured properly'
@@ -109,36 +106,14 @@ app.post('/joke', async (req, res) => {
     }
 });
 
-/**
- * Fallback route for undefined endpoints
- */
-app.use('*', (req, res) => {
-    res.status(404).json({
-        error: 'Endpoint not found',
-        availableEndpoints: ['GET /health', 'POST /joke']
-    });
-});
-
-/**
- * Error handling middleware
- */
-app.use((error, req, res, next) => {
-    console.error('Unhandled error:', error);
-    res.status(500).json({
-        error: 'Internal server error'
-    });
-});
-
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Joke Generator API running on port ${PORT}`);
+    console.log(`🚀 Joke Generator API running on port ${PORT} (Development)`);
     console.log(`📡 Health check: http://localhost:${PORT}/health`);
     console.log(`🎭 Joke endpoint: http://localhost:${PORT}/joke`);
     
-    // Check if API key is configured
     if (!process.env.GEMINI_API_KEY) {
         console.warn('⚠️  WARNING: GEMINI_API_KEY not found in environment variables');
-        console.warn('   Create a .env file with: GEMINI_API_KEY=your_api_key_here');
     }
 });
 

@@ -1,77 +1,82 @@
 # Joke Generator
 
-A minimal, clean web application that generates random jokes based on user input. Built with HTML, CSS, and vanilla JavaScript following production-grade coding practices.
+AI-powered joke generator using Gemini API with multiple deployment options.
 
-## Features
+## 🌿 Branch Structure
 
-- 🎭 Clean, modern UI with gradient backgrounds and smooth animations
-- 📱 Fully responsive design that works on all devices
-- ✅ Input validation with real-time feedback
-- ⚡ Loading states and error handling
-- 🎨 Beautiful animations and transitions
-- 🧹 Clean, well-documented code
+- **`main`** - Production version (Netlify deployment)
+- **`development`** - Localhost version (Node.js backend)
+- **`production`** - Netlify Functions version
 
-## How to Run
+## 🚀 Quick Start
 
-1. Simply open `index.html` in your web browser
-2. Enter a word or sentence in the input field
-3. Click "Generate Joke" to get a random joke!
+### Development (Localhost)
+```bash
+# Switch to development branch
+git checkout development
 
-## Project Structure
+# Install dependencies
+npm install
+
+# Start backend server
+npm start
+
+# Open index.html in browser
+# Make sure to use script-dev.js for development
+```
+
+### Production (Netlify)
+```bash
+# Switch to main branch
+git checkout main
+
+# Deploy to Netlify
+# Connect GitHub repo to Netlify
+# Add GEMINI_API_KEY environment variable
+```
+
+## 📁 Project Structure
 
 ```
-├── index.html      # Main HTML structure
-├── styles.css      # CSS styling and animations
-├── script.js       # JavaScript functionality
-└── README.md       # This file
+joke-generator/
+├── index.html              # Frontend
+├── styles.css              # Frontend styling
+├── script.js               # Production frontend (Netlify Functions)
+├── script-dev.js           # Development frontend (localhost)
+├── server-dev.js           # Development backend (Node.js)
+├── package.json            # Production dependencies
+├── package-dev.json        # Development dependencies
+├── netlify/
+│   └── functions/
+│       └── joke.js         # Netlify Function
+├── netlify.toml            # Netlify configuration
+└── README.md               # This file
 ```
 
-## Code Quality Features
+## 🔧 Environment Variables
 
-### HTML
-- Semantic HTML5 structure
-- Proper accessibility attributes
-- Clean, readable markup
+Create `.env` file:
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+PORT=3001
+```
 
-### CSS
-- Modern CSS with flexbox and grid
-- Responsive design with mobile-first approach
-- CSS custom properties for maintainability
-- Smooth animations and transitions
-- Clean, organized stylesheet structure
+## 🎯 Features
 
-### JavaScript
-- ES6+ features and modern syntax
-- Comprehensive error handling
-- Input validation
-- Clean separation of concerns
-- Well-documented functions
-- Production-ready code structure
-- Async/await for better readability
+- AI-generated jokes using Gemini API
+- Token usage tracking
+- Error handling
+- Responsive design
+- Multiple deployment options
 
-## Learning Points
+## 📚 Git Workflow
 
-This project demonstrates:
+1. **Development:** Work on `development` branch
+2. **Testing:** Test locally with Node.js backend
+3. **Production:** Merge to `main` for Netlify deployment
+4. **Pull Requests:** Use PRs for code review
 
-1. **Clean Code Principles**: Well-organized, readable code with clear function names
-2. **Error Handling**: Proper validation and user feedback
-3. **Modern JavaScript**: ES6+ features, async/await, proper event handling
-4. **Responsive Design**: Mobile-first CSS approach
-5. **User Experience**: Loading states, animations, and clear feedback
-6. **Code Organization**: Separation of concerns and modular structure
+## 🚀 Deployment
 
-## Browser Compatibility
-
-Works in all modern browsers that support:
-- ES6+ JavaScript features
-- CSS Grid and Flexbox
-- CSS Custom Properties
-- Async/await
-
-## Future Enhancements
-
-- Connect to a real joke API
-- Add more joke categories
-- Implement joke rating system
-- Add sharing functionality
-- Include more animations
+- **Development:** Localhost with Node.js
+- **Production:** Netlify with serverless functions

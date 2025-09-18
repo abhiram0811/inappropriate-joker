@@ -1,7 +1,6 @@
-// API Configuration - Use Netlify Functions
-const API_BASE_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3001' 
-    : '/.netlify/functions';
+// Development Version - Localhost Backend
+// API Configuration
+const API_BASE_URL = 'http://localhost:3001';
 
 // Get DOM elements
 const form = document.getElementById('jokeForm');
