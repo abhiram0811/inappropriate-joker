@@ -1,7 +1,5 @@
-// API Configuration - Use production URL when deployed
-const API_BASE_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3001' 
-    : 'https://YOUR_RAILWAY_URL_HERE.railway.app';
+// API Configuration - Use Netlify Functions
+const API_BASE_URL = '/.netlify/functions';
 
 // Get DOM elements
 const form = document.getElementById('jokeForm');
