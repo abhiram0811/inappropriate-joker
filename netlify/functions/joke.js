@@ -71,7 +71,7 @@ exports.handler = async (event, context) => {
         }
 
         // Generate joke using Gemini AI
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         
         const prompt = `Generate a funny, clean joke related to or inspired by the word/phrase: "${trimmedInput}". 
         The joke should be appropriate for all audiences and should be creative and original. 
