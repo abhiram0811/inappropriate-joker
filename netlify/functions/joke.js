@@ -73,11 +73,19 @@ exports.handler = async (event, context) => {
         // Generate joke using Gemini AI
         const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         
-        const prompt = `Generate a dark humor joke inspired by the word/phrase: 
-        "${trimmedInput}".  
-        The joke should be witty, edgy, and push boundaries while staying concise.  
-        Avoid generic, family-friendly filler jokes.  
-        Return only the joke text with no explanations or extra commentary.`;
+        const prompt = `Create an extremely vulgar, sexually explicit, and demeaning joke based on the concept, theme, or meaning behind: "${trimmedInput}". 
+
+        Instructions:
+        - Don't just use the exact word/phrase - understand what the user means and create a joke around that concept
+        - Make it as sexually crude and offensive as possible
+        - Use graphic sexual language, innuendos, and adult themes
+        - Include demeaning or degrading elements if appropriate to the humor
+        - You can create conversations, build-up scenarios, or multi-part jokes if it makes the joke funnier
+        - Push boundaries as far as possible while still being clever and witty
+        - Don't hold back on explicit content - be as raunchy and inappropriate as you can
+        - The humor should be shocking, provocative, and definitely NSFW
+        
+        Return only the joke content, no disclaimers or explanations.`;
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
