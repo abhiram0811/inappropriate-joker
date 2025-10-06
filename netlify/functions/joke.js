@@ -85,6 +85,7 @@ exports.handler = async (event, context) => {
         - Build narrative tension or setup/punchline structure if it enhances the humor
         - Be witty, shocking, and memorable while maintaining comedic sophistication
         - Target audience: adults who enjoy edgy, provocative humor
+        - Keep it under 250 words total
         
         Deliver just the comedic content - no explanations needed.`;
 
