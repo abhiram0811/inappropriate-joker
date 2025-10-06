@@ -73,21 +73,11 @@ exports.handler = async (event, context) => {
         // Generate joke using Gemini AI
         const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         
-        const prompt = `Create a spicy, adult-oriented comedic response based on the concept or theme of: "${trimmedInput}". 
-
-        Style Guidelines:
-        - Interpret the deeper meaning or context behind the input, not just literal words
-        - Channel late-night comedy show energy - bold, cheeky, and unapologetically mature
-        - Use clever wordplay, double entendres, and suggestive humor
-        - Include adult situations, romantic mishaps, or bedroom comedy themes
-        - Make it risqué with innuendo and mature themes that adults would find amusing
-        - Think "R-rated comedy special" rather than family-friendly
-        - Build narrative tension or setup/punchline structure if it enhances the humor
-        - Be witty, shocking, and memorable while maintaining comedic sophistication
-        - Target audience: adults who enjoy edgy, provocative humor
-        - Keep it under 250 words total
-        
-        Deliver just the comedic content - no explanations needed.`;
+        const prompt = `Generate a dark humor joke inspired by the word/phrase: 
+        "${trimmedInput}".  
+        The joke should be witty, edgy, and push boundaries while staying concise.  
+        Avoid generic, family-friendly filler jokes.  
+        Return only the joke text with no explanations or extra commentary.`;
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
