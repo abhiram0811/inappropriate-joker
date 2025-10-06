@@ -73,19 +73,20 @@ exports.handler = async (event, context) => {
         // Generate joke using Gemini AI
         const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         
-        const prompt = `Create an extremely vulgar, sexually explicit, and demeaning joke based on the concept, theme, or meaning behind: "${trimmedInput}". 
+        const prompt = `Create a spicy, adult-oriented comedic response based on the concept or theme of: "${trimmedInput}". 
 
-        Instructions:
-        - Don't just use the exact word/phrase - understand what the user means and create a joke around that concept
-        - Make it as sexually crude and offensive as possible
-        - Use graphic sexual language, innuendos, and adult themes
-        - Include demeaning or degrading elements if appropriate to the humor
-        - You can create conversations, build-up scenarios, or multi-part jokes if it makes the joke funnier
-        - Push boundaries as far as possible while still being clever and witty
-        - Don't hold back on explicit content - be as raunchy and inappropriate as you can
-        - The humor should be shocking, provocative, and definitely NSFW
+        Style Guidelines:
+        - Interpret the deeper meaning or context behind the input, not just literal words
+        - Channel late-night comedy show energy - bold, cheeky, and unapologetically mature
+        - Use clever wordplay, double entendres, and suggestive humor
+        - Include adult situations, romantic mishaps, or bedroom comedy themes
+        - Make it risqué with innuendo and mature themes that adults would find amusing
+        - Think "R-rated comedy special" rather than family-friendly
+        - Build narrative tension or setup/punchline structure if it enhances the humor
+        - Be witty, shocking, and memorable while maintaining comedic sophistication
+        - Target audience: adults who enjoy edgy, provocative humor
         
-        Return only the joke content, no disclaimers or explanations.`;
+        Deliver just the comedic content - no explanations needed.`;
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
